@@ -1,18 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class project : MonoBehaviour
+public class Project : MonoBehaviour
 {
     private Rigidbody2D rb;
     private SpringJoint2D springJoint2D;
     private bool isPress;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         springJoint2D = GetComponent<SpringJoint2D>();
-
-
     }
 
     // Update is called once per frame
@@ -20,26 +19,25 @@ public class project : MonoBehaviour
     {
         if (isPress)
         {
-            rb.position=Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-
+            rb.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
-
     }
+
     private void OnMouseDown()
     {
-        isPress= true;
+        isPress = true;
         rb.bodyType = RigidbodyType2D.Kinematic;
-        
     }
+
     private void OnMouseUp()
     {
-        isPress= false;
-        rb.bodyType=RigidbodyType2D.Dynamic;
+        isPress = false;
+        rb.bodyType = RigidbodyType2D.Dynamic;
 
         StartCoroutine(Release());
     }
-    IEnumerator Release()
+
+    private IEnumerator Release()
     {
         yield return new WaitForSeconds(0.15f);
 
