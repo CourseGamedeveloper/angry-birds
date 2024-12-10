@@ -10,6 +10,4 @@ public class DestoryBirds : MonoBehaviour
             ScenceController.Instance.NextLevel();
         }
     }
-   
-
 }
